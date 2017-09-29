@@ -180,7 +180,7 @@ def SEND_MESSAGE(op):
                         sendMessage(msg.to, ""+contact.displayName+" Sorry")
                     else:
                         sendMessage(msg.to, "wtf?")
-                if msg.text == "ยก":
+                if msg.text == "ลบเชิญ":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
                         sendMessage(op.message.to, "ไม่มีสมชิดไห้ยกเลิก* *\n")
@@ -194,7 +194,7 @@ def SEND_MESSAGE(op):
                     client.inviteIntoGroup(msg.to, [key])
                     contact = client.getContact(key)
                     sendMessage(msg.to, ""+contact.displayName+" I invited you")
-                if msg.text == "คท":
+                if msg.text == "กู":
                     M = Message()
                     M.to = msg.to
                     M.contentType = 13
@@ -207,9 +207,9 @@ def SEND_MESSAGE(op):
                     sendMessage(msg.to, ""+contact.displayName+"'s contact")
                 if msg.text == "เวลา":
                     sendMessage(msg.to, "ขณะนี้เวลา" + datetime.datetime.today().strftime('ปี%Yเดือน%mวัน%d %H:%M:%S') + "")
-                if msg.text == "ของขวัญ":
+                if msg.text == "Gift":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
-                if msg.text == "ใครแอบ":
+                if msg.text == "ตั้งเวลา":
                     sendMessage(msg.to, "กรุณาใช้คำสั่ง ♪\n「ใครอ่าน」\nต่อด้วยคับ ♪")
                     try:
                         del wait['readPoint'][msg.to]
@@ -221,7 +221,7 @@ def SEND_MESSAGE(op):
                     wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
                     wait['ROM'][msg.to] = {}
                     print wait
-                if msg.text == "ใครอ่าน":
+                if msg.text == "อ่าน":
                     if msg.to in wait['readPoint']:
                         if wait["ROM"][msg.to].items() == []:
                             chiya = ""

@@ -167,7 +167,7 @@ def SEND_MESSAGE(op):
                     client.kickoutFromGroup(msg.to, [key])
                     contact = client.getContact(key)
                     sendMessage(msg.to, ""+contact.displayName+"ฉันขอโทษ**")
-                if "nk:" in msg.text:
+                if "Hi:" in msg.text:
                     key = msg.text[3:]
                     group = client.getGroup(msg.to)
                     Names = [contact.displayName for contact in group.members]
@@ -183,7 +183,7 @@ def SEND_MESSAGE(op):
                 if msg.text == "ลบเชิญ":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
-                        sendMessage(op.message.to, "ไม่มีสมชิดไห้ยกเลิก* *\n")
+                        sendMessage(op.message.to, "ไม่มีสมาชิกไห้ยกเลิก* *\n")
                     else:
                         gInviMids = [contact.mid for contact in group.invitee]
                         client.cancelGroupInvitation(msg.to, gInviMids)
@@ -210,7 +210,7 @@ def SEND_MESSAGE(op):
                 if msg.text == "Gift":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
                 if msg.text == "ตั้งเวลา":
-                    sendMessage(msg.to, "กรุณาใช้คำสั่ง ♪\n「ใครอ่าน」\nต่อด้วยคับ ♪")
+                    sendMessage(msg.to, "กรุณาใช้คำสั่ง ♪\n「ตั้งเวลา」\nต่อด้วยคับ ♪")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
@@ -233,7 +233,7 @@ def SEND_MESSAGE(op):
 
                         sendMessage(msg.to, "จำนานสมาชิก %s\n\n\nสมาชิกที่อ่าน\n%sสมาชิกที่อ่าน ♪\n\nเวลาที่เข้ามาอ่าน:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
-                        sendMessage(msg.to, "คุณยังไม่ได้ใช้คำสั่ง.\n「ใครแอบ」\nกรุณาใช้ด้วยคับ ♪")
+                        sendMessage(msg.to, "คุณยังไม่ได้ใช้คำสั่ง.\n「ตั้งเวลา」\nกรุณาใช้ด้วยคับ ♪")
                 else:
                     pass
         else:

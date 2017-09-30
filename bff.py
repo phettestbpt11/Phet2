@@ -61,7 +61,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_LEAVE_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + " ขอไห้คุณโชคดี * *\n(*´･ω･*)")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + " ได้ออกจากกลุ่ม * *\n(*´･ω･*)")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
@@ -130,7 +130,7 @@ def SEND_MESSAGE(op):
                     sendMessage(msg.to, msg.from_)
                 if msg.text == "Gid":
                     sendMessage(msg.to, msg.to)
-                if msg.text == "กลุ่ม":
+                if msg.text == "Ginfo":
                     group = client.getGroup(msg.to)
                     md = "[Group Name]\n" + group.name + "\n\n[gid]\n" + group.id + "\n\n[Group Picture]\nhttp://dl.profile.line-cdn.net/" + group.pictureStatus
                     if group.preventJoinByTicket is False: md += "\n\nInvitationURL: Permitted\n"
@@ -180,7 +180,7 @@ def SEND_MESSAGE(op):
                         sendMessage(msg.to, ""+contact.displayName+" Sorry")
                     else:
                         sendMessage(msg.to, "wtf?")
-                if msg.text == "ลบเชิญ":
+                if msg.text == "ยกเลิก":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
                         sendMessage(op.message.to, "ไม่มีสมาชิกไห้ยกเลิก* *\n")

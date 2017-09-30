@@ -62,7 +62,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_LEAVE_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + " ขอไห้คุณโชคดี * *\n(*´･ω･*)")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + " ได้ออกจากลุ่ม * *\n(*´･ω･*)")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
@@ -163,7 +163,7 @@ def SEND_MESSAGE(op):
                         group.preventJoinByTicket = True
                         client.updateGroup(group)
                         sendMessage(msg.to, "คุณได้ปิดลิ้งกลุ่ม * * ")
-                if "เตะ:" in msg.text:
+                if "Hi:" in msg.text:
                     key = msg.text[5:]
                     client.kickoutFromGroup(msg.to, [key])
                     contact = client.getContact(key)
@@ -181,10 +181,10 @@ def SEND_MESSAGE(op):
                         sendMessage(msg.to, ""+contact.displayName+" Sorry")
                     else:
                         sendMessage(msg.to, "wtf?")
-                if msg.text == "ยกเลิก":
+                if msg.text == "ลบเชิญ":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
-                        sendMessage(op.message.to, "ไม่มีสมชิดไห้ยกเลิก* *\n")
+                        sendMessage(op.message.to, "ไม่มีสมาชิกไห้ยกเลิก* *\n")
                     else:
                         gInviMids = [contact.mid for contact in group.invitee]
                         client.cancelGroupInvitation(msg.to, gInviMids)
@@ -207,8 +207,8 @@ def SEND_MESSAGE(op):
                     contact = client.getContact(key)
                     sendMessage(msg.to, ""+contact.displayName+"'s contact")
                 if msg.text == "เวลา":
-                    sendMessage(msg.to, "ขณะนี้เวลา" + datetime.datetime.today().strftime('ปี%Yเดือน%mวัน%d %H:%M:%S') + "")
-                if msg.text == "ของขวัญ":
+                    sendMessage(msg.to, "ขณะนี้เวลา" + datetime.datetime.today().strftime('ปี%Yเดือน%mวันที่%d %H:%M:%S') + "")
+                if msg.text == "Gift":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
                 if msg.text == "อ่าน":
                     sendMessage(msg.to, "กรุณาใช้คำสั่ง ♪\n「ใครอ่าน」\nต่อด้วยคับ ♪")
@@ -249,3 +249,4 @@ tracer.addOpInterrupt(25,SEND_MESSAGE)
 
 while True:
     tracer.execute()
+    elifmsg.textin["Sp","Speed","speed"]:start=time.time()cl.sendText(msg.to,"Progress...")elapsed_time=time.time()-startcl.sendText(msg.to,"%sseconds"%(elapsed_time))ki.sendText(msg.to,"%sseconds"%(elapsed_time))kk.sendText(msg.to,"%sseconds"%(elapsed_time))kc.sendText(msg.to,"%sseconds"%(elapsed_time))

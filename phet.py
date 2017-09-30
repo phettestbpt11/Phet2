@@ -248,4 +248,3 @@ tracer.addOpInterrupt(25,SEND_MESSAGE)
 
 while True:
     tracer.execute()
-    elifmsg.textin["Sp","Speed","speed"]:start=time.time()cl.sendText(msg.to,"Progress...")elapsed_time=time.time()-startcl.sendText(msg.to,"%sseconds"%(elapsed_time))ki.sendText(msg.to,"%sseconds"%(elapsed_time))kk.sendText(msg.to,"%sseconds"%(elapsed_time))kc.sendText(msg.to,"%sseconds"%(elapsed_time))
